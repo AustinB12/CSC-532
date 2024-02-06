@@ -3,6 +3,8 @@ import math
 def max_corssing_sub_array(a, low, mid, high):
     left_sum = -math.inf
     sum = 0
+    max_left = -math.inf
+    max_right = -math.inf
     right_sum = -math.inf
     
     for i in range(mid, low, -1):
@@ -10,11 +12,8 @@ def max_corssing_sub_array(a, low, mid, high):
         if sum > left_sum:
             left_sum = sum
             max_left = i
-            
     right_sum = -math.inf
-    
     sum = 0
-    
     for j in range (mid+1, high):
         sum = sum + a[j]
         if sum > right_sum:
