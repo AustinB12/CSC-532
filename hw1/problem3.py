@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 
-def merge(A, p, q, r):
+def merge(A: list[int], p: int, q: int, r: int):
     n1 = q - p + 1
     n2 = r - q
 
@@ -29,20 +29,63 @@ def merge(A, p, q, r):
             A[k] = R[j]
             j += 1
 
-def merge_sort(A, p, r):
+def merge_sort(A: list[int], p: int, r: int):
+    """
+    This function implements a recursive Merge-Sort algorithm.
+    
+    Parameters:
+    A (list[int]): A list of integers
+    p (int): Represents the starting index to sort 
+    r (int): Represents the ending index to sort
+    
+    Returns:
+    void
+    """
+    
+    # Check if the lower bound is in fact lower than the upper bound
+    # If not, we are done
     if p < r:
+        # q will represent the mid-point
         q = (p + r) // 2
+        
+        # Sort from the lower bound to the midpoint
         merge_sort(A, p, q)
+        
+        # Sort from the midpoint to the upper bound
         merge_sort(A, q + 1, r)
+        
+        # Join the newly sorted sub-lists
         merge(A, p, q, r)
 
-def insertion_sort(A: list):
+def insertion_sort(A):
+    """
+    This function implements an Insertion Sort algorithm.
+    
+    Parameters:
+    A (list[int]): A list of integers
+    
+    Returns:
+    void
+    """
     for j in range(1, len(A)):
+        # KEY is the value we are currently assessing
         key = A[j]
+        
+        # i is the index of the value exactly 1 spot before KEY 
         i = j - 1
+        
+        # I.E. : While we have not reached the beginning of the list
+        # AND
+        # the value 1 index before the KEY is greater than the KEY
         while i >= 0 and A[i] > key:
+            # Copy the value of A[i] to the index to it's immediate right
             A[i + 1] = A[i]
+            
+            # Move to the left
             i -= 1
+            
+        # Copy the KEY value to the index 1 spot to the right
+        # of the last index we compared to
         A[i + 1] = key
 
 def main(): 
