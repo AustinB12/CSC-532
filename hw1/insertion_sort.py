@@ -10,3 +10,5 @@ def insertion_sort(arr):
         arr[comparison_index + 1] = curr_value
     
     return arr
+
+#test
