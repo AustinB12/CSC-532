@@ -4,7 +4,19 @@ import random
 from tqdm import tqdm
 import matplotlib.pyplot as plt
 
-def maximumCrossingSubarrayBook(A, low, mid, high):
+def maximumCrossingSubarrayBook(A: list[int], low: int, mid: int, high: int):
+    """
+    maximumCrossingSubarrayBook
+
+    Parameters: 
+    A (list[int]):
+    low (int): The lower index of the array
+    mid (int): The index of the middle of the sub array
+    high (int): The higher index of the array
+    
+    Returns:
+    void
+    """
     left_sum = float('-inf')
     sum = 0
     for i in range(mid, low - 1, -1):
@@ -21,7 +33,19 @@ def maximumCrossingSubarrayBook(A, low, mid, high):
             max_right = j
     return (max_left, max_right, left_sum + right_sum)
 
-def maximumSubarrayBook(A, low, high):
+def maximumSubarrayBook(A: list[int], low: int, high: int):
+    """
+    maximumSubarrayBook implements the pseudo-code max subarray
+    algorithm discussed in the textbook.
+
+    Parameters: 
+    A (list[int]):
+    low (int): The lower index of the array
+    high (int): The higher index of the array
+
+    Returns:
+    void
+    """
     if high == low:
         return (low, high, A[low])
     else:
@@ -38,6 +62,17 @@ def maximumSubarrayBook(A, low, high):
     
 
 def maximumSubarrayBruteForce(A):
+    """
+    Implements a simple, brute force approach to
+    finding the greatest sub array in an array
+    of integers. 
+    
+    Parameters: 
+    A (list[int]):
+
+    Returns:
+    void
+    """
     max_sum = float('-inf')
     for i in range(len(A)):
         sum = 0
